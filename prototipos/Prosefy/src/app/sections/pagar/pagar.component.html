@@ -1,0 +1,103 @@
+<div class="container-pagar">
+  <!--Lado izquierdo-->
+  <div class="container-pagos">
+    <app-boton-volver></app-boton-volver>
+    <div class="container-pago shadow rounded">
+      <div class="text-1">
+        <label class="font-style-1">¿Cómo querés pagar?</label>
+      </div>
+      <div class="text-2">
+        <label class="font-style">Con débito o Transferencia</label>
+      </div>
+      <div class="container-tarjeta mt-5" (click)="seleccionarMetodoPago('Debito')">
+        <button class="circle-button" [ngClass]="{ 'active': metodoSeleccionado === 'Debito' }"></button>
+        <div class="tarjeta rounded shadow bg-light">
+          <img class="img-tarjeta rounded mb-2 ml-2" src="./assets/img/Pagar/transferencia.png" alt="img">
+          <label class="label-text font-style">Transferncia Bancaria</label>
+        </div>
+      </div>
+      <div class="container-tarjeta mt-5" (click)="seleccionarMetodoPago('NuevoDebito')">
+        <button class="circle-button" [ngClass]="{ 'active': metodoSeleccionado === 'NuevoDebito' }"></button>
+        <div class="tarjeta rounded shadow bg-light">
+          <img class="img-tarjeta rounded mb-2 ml-2" src="./assets/img/Pagar/tarjeta-de-pago.png" alt="img">
+          <label class="label-text font-style">Nueva tarjeta de débito</label>
+        </div>
+      </div>
+      <div class="text-2">
+        <label class="font-style">Con crédito</label>
+      </div>
+      <label class="cuotas fw-bold">Cuotas</label>
+      <div class="container-tarjeta mt-5" (click)="seleccionarMetodoPago('Credito')">
+        <button class="circle-button" [ngClass]="{ 'active': metodoSeleccionado === 'Credito' }"></button>
+        <div class="tarjeta rounded shadow bg-light">
+          <img class="img-tarjeta rounded mb-2 ml-2" src="./assets/img/Pagar/tarjeta-de-pago.png" alt="img">
+          <label class="label-text font-style" *ngIf="mostrarLabel">Nueva tarjeta de crédito</label>
+          <label class="label-text font-style" *ngIf="noMostrarlabel">Nueva tarjeta</label>
+          <div class="container-contador">
+            <button class="fw-bold lead ml-1 btn btn-lg  boton-contador" (click)="disminuirContador()">-</button>
+            <h1 class="fw-bold lead ml-1 mt-1">{{ contador }}</h1>
+            <button class="fw-bold lead ml-1 btn btn-lg " (click)="aumentarContador()">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="text-2">
+        <label class="font-style">Con otras formas de pago</label>
+      </div>
+      <div class="container-tarjeta mt-5" (click)="seleccionarMetodoPago('Efectivo')">
+        <button class="circle-button" [ngClass]="{ 'active': metodoSeleccionado === 'Efectivo' }"></button>
+        <div class="tarjeta rounded shadow bg-light">
+          <img class="img-tarjeta rounded mb-2 ml-2" src="./assets/img/Pagar/efectivo.png" alt="img">
+          <label class="label-text font-style">Efectivo</label>
+        </div>
+      </div>
+      <div class="boton-abajo">
+        <button class="boton-comprar rounded font-style" (click)="crearPedido()" [disabled]="!metodoSeleccionado">Comprar</button>
+      </div>
+    </div>
+    <div class="marg"></div>
+  </div>
+  <div class="container-resumen bg-light">
+    <div class="carrito">
+      <img src="./assets/img/Pagar/carrito-realista.png" class="img-carrito">
+    </div>
+    <div>
+      <p class="text-3 font-style-1">Resumen de compra</p>
+    </div>
+    <div class="container-detalle">
+      <div class="detalle">
+        <div>
+          <label class="font-style">Productos</label>
+        </div>
+        <div>
+          <label class="font-style">{{subtotal}}</label>
+        </div>
+      </div>
+      <div class="productos" *ngFor="let libro of libros">
+        <div class="libros">
+          <ul>
+            <li class="fw-bold lead">{{libro.titulo}}</li>
+          </ul>
+        </div>
+        <div class="precios">
+          <label class="fw-bold lead ml-1">{{libro.precio}}</label>
+        </div>
+      </div>
+      <div class="detalle">
+        <div>
+          <label class="font-style lead">Envio</label>
+        </div>
+        <div>
+          <label class="font-style" *ngIf="total > 10000">¡Gratis!</label>
+          <label class="font-style" *ngIf="total < 10000">3.000</label>
+        </div>
+      </div>
+    </div>
+    <div class="total">
+      <label class="font-style-1 text-3">Total:</label>
+      <label class="font-style-1 text-3 text-primary">{{total}}</label>
+    </div>
+    <div>
+      <p class="text-1 font-style">¡Si compras hoy, tu pedido llegará mañana!</p>
+    </div>
+  </div>
+</div>

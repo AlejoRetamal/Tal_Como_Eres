@@ -1,0 +1,109 @@
+.custom-h3 {
+  margin-left: 2rem !important;
+}
+
+.vertical-list {
+  width: 100%;
+}
+
+.book {
+  margin-bottom: 20px;
+  /* Espacio entre libros */
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.book-content {
+  text-align: center;
+}
+
+.book-cover {
+  max-width: 50%;
+  height: auto;
+}
+
+.book-title {
+  font-size: 1.8rem;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.rating {
+  font-size: 24px;
+}
+
+.star {
+  color: #d9d9d9;
+}
+
+.star.filled {
+  color: #ffbf00;
+}
+
+.book-text {
+  font-size: 1rem;
+  margin: 5px 0;
+  font-style: italic;
+}
+
+.precio {
+  font-size: 1.6em;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.heart-icon {
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+.filled {
+  fill: red;
+}
+
+.heart-icon:not(.filled) {
+  fill: gray;
+}
+
+.heart-pulse {
+  animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.custom-form-control {
+  width: 10% !important;
+}
+
+.custom-pagination {
+  gap: 0.6rem;
+}
+
+.custom-page-link {
+  cursor: pointer;
+}
+
+.custom-pages {
+  font-weight: bold;
+  color: #292929;
+}
+
+.text-decoration-none {
+  color: #1e1e1e;
+}

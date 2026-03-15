@@ -1,0 +1,42 @@
+<div class="container-fluid d-flex justify-content-center align-items-center flex-column py-2">
+  <div class="lista-libros">
+    <div class="rounded-button shadow d-flex justify-content-center align-items-center">
+      <button class="btn boton-izquierda boton-moderno" (click)="moverIzquierda()" [class.disabled]="elementosAlInicio">
+        &lt;
+      </button>
+    </div>
+    <div class="lista-contenedor container-fluid">
+      <div class="elementos-lista py-4 container-fluid">
+        <div *ngFor="let libroId of librosIds.slice(elementoActual, elementoActual + elementosPorPaso); let i = index"
+          (click)="navegarALibro(libroId)" class="elemento-lista elemento-animado animacion-tarjeta hover-grow">
+          <div class="libro card">
+            <ng-container *ngIf="librosData[libroId] as libro">
+              <img [src]="libro.portada" alt="Portada del libro" class="card-img-top tarjeta-imagen"
+                [style.height.px]="calcularAlturaImagen()" [style.width]="'auto'" />
+              <div class="card-body">
+                <p class="card-text precio">
+                  {{ libro.precio ? "$" + calculatePriceInSelectedCurrency(libro!.precio).toLocaleString() : "Precio
+                  no
+                  disponible" }}
+                  <small class="text-muted">
+                    {{ currencyService.getCurrency() }}
+                  </small>
+                </p>
+                <p class="card-text descripcion" *ngIf="libro.descripcion">
+                  {{ libro.descripcion | slice:0:descripcionMaxLength }}
+                  <span *ngIf="libro.descripcion.length > descripcionMaxLength">...</span>
+                </p>
+                <p *ngIf="!libro.descripcion">Sin descripción disponible.</p>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rounded-button shadow d-flex justify-content-center align-items-center">
+      <button class="btn boton-derecha boton-moderno" (click)="moverDerecha()" [class.disabled]="elementosAlFinal">
+        &gt;
+      </button>
+    </div>
+  </div>
+</div>
