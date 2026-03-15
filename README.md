@@ -43,8 +43,6 @@ Para ejecutar el Frontend debes posicionate con el siguiente comando: `cd ruta-d
 
 Para ejecutar el Backend debes posicionate con el siguiente comando: `cd ruta-del.proyecto\Backend` seguido de `npm run start:dev`
 
-<!-- Acá tengo dudas si agregar lo de la extensión para conectar con la base de datos. -->
-
 ## Validación de la instalacion 
 
 Para asegurarte de que la instalación fue exitosa, puedes realizar las siguientes verificaciones:

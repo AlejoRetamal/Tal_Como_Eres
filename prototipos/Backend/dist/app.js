@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import { connectDB } from "./database.js";
 import { editorialRouter } from "./Editorial/Editorial.routes.js";
 import { usuarioRouter } from "./Usuario/Usuario.routes.js";
 import { autorRouter } from "./Autor/Autor.routes.js";
@@ -11,7 +12,6 @@ import { formatoRouter } from "./formatoLibro/formatoLibro.routes.js";
 import { reseniaRouter } from "./Resenia/Resenia.routes.js";
 import { pedidoRouter } from "./Pedido/Pedido.routes.js";
 const app = express();
-// Configurar opciones de CORS
 const corsOptions = {
     origin: "*",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
@@ -33,7 +33,13 @@ app.use("/api/pedidos", pedidoRouter);
 app.use((_, res) => {
     return res.status(404).send({ message: "Resource not found" });
 });
-app.listen(3000, () => {
-    console.log("Server running on http://localhost:3000/");
+// Conectar a MongoDB y luego levantar el servidor
+connectDB().then(() => {
+    app.listen(3000, () => {
+        console.log("Server running on http://localhost:3000/");
+    });
+}).catch((err) => {
+    console.error("Error al conectar a MongoDB:", err);
+    process.exit(1);
 });
 //# sourceMappingURL=app.js.map
