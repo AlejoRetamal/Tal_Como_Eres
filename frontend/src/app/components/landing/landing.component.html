@@ -1,0 +1,60 @@
+<app-navbar></app-navbar>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <h1 class="hero-title">
+      Vestite<br>
+      <em>tal como</em><br>
+      eres.
+    </h1>
+    <p class="hero-desc">
+      Prendas que se adaptan a vos, no al revés.
+      Diseño consciente, calidad que se siente,
+      estilo que nace desde adentro.
+    </p>
+  </div>
+
+  <!-- GRID DE PRENDAS -->
+  <div class="hero-right">
+    <div class="productos-grid">
+      <div class="producto-card" *ngFor="let p of productos">
+        <div class="producto-img">
+          <img *ngIf="p.imagen" [src]="p.imagen" [alt]="p.nombre">
+          <div *ngIf="!p.imagen" class="producto-img-placeholder">
+            <span>TCE</span>
+          </div>
+          <span class="producto-categoria">{{ p.categoria }}</span>
+        </div>
+        <div class="producto-info">
+          <p class="producto-nombre">{{ p.nombre }}</p>
+          <p class="producto-precio">{{ formatPrecio(p.precio) }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORÍAS -->
+<section class="categories">
+  <div class="section-header">
+    <h2 class="section-title">Explorar por categoría</h2>
+    <a href="#" class="section-link">Ver todo</a>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card" *ngFor="let cat of categories; let i = index" [class.featured]="i === 0">
+      <div class="cat-bg" [style.background]="cat.gradient"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-info">
+        <div class="cat-name">{{ cat.name }}</div>
+        <div class="cat-count">{{ cat.count }} prendas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer-bar">
+  <span class="footer-copy">© 2025 Tal Como Eres. Todos los derechos reservados.</span>
+  <span class="footer-brand">Tal Como Eres</span>
+</footer>
