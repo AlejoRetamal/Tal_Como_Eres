@@ -1,0 +1,27 @@
+<div>
+  <h2>Usuarios</h2>
+
+  <!-- Formulario crear -->
+  <div>
+    <input [(ngModel)]="newUser.name"  placeholder="Nombre" />
+    <input [(ngModel)]="newUser.email" placeholder="Email" />
+    <button (click)="create()">Agregar</button>
+  </div>
+
+  <!-- Lista -->
+  <ul>
+    <li *ngFor="let user of users">
+      {{ user.name }} — {{ user.email }}
+      <button (click)="edit(user)">Editar</button>
+      <button (click)="remove(user.id!)">Eliminar</button>
+    </li>
+  </ul>
+
+  <!-- Formulario editar -->
+  <div *ngIf="editingUser">
+    <input [(ngModel)]="editingUser.name"  placeholder="Nombre" />
+    <input [(ngModel)]="editingUser.email" placeholder="Email" />
+    <button (click)="update()">Guardar</button>
+    <button (click)="editingUser = null">Cancelar</button>
+  </div>
+</div>
