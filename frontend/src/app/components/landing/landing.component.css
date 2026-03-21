@@ -49,17 +49,24 @@
   animation: fadeUp 0.8s ease 0.6s forwards;
 }
 
-/* HERO RIGHT — GRID DE PRODUCTOS */
 .hero-right {
   background: var(--light);
   display: flex;
   align-items: flex-start;
   justify-content: center;
   padding: 32px;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 100%;
   position: relative;
   z-index: 0;
+}
+
+.page {
+  padding-top: 72px;
+  min-height: 100vh;
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
 }
 
 .productos-grid {

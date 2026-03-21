@@ -1,0 +1,57 @@
+<app-navbar></app-navbar>
+
+<div class="admin-wrap">
+  <div class="admin-header">
+    <h1 class="admin-titulo">Panel de órdenes</h1>
+    <p class="admin-count">{{ ordenes.length }} órdenes en total</p>
+  </div>
+
+  <div class="cargando" *ngIf="cargando">Cargando órdenes...</div>
+
+  <div class="ordenes-lista" *ngIf="!cargando">
+    <div class="orden-card" *ngFor="let orden of ordenes">
+
+      <div class="orden-header">
+        <div>
+          <span class="orden-num">Orden #{{ orden.id }}</span>
+          <span class="orden-fecha">{{ formatFecha(orden.created_at) }}</span>
+        </div>
+        <select
+          class="estado-select"
+          [value]="orden.estado"
+          (change)="cambiarEstado(orden, $any($event.target).value)"
+          [class]="'estado-' + orden.estado"
+        >
+          <option *ngFor="let e of estados" [value]="e">{{ e }}</option>
+        </select>
+      </div>
+
+      <div class="orden-body">
+        <div class="orden-cliente">
+          <p class="orden-nombre">{{ orden.nombre }} {{ orden.apellido }}</p>
+          <p class="orden-dato">{{ orden.email }}</p>
+          <p class="orden-dato">{{ orden.telefono }}</p>
+          <p class="orden-dato">{{ orden.domicilio }}, {{ orden.ciudad }}</p>
+        </div>
+
+        <div class="orden-items">
+          <div class="orden-item" *ngFor="let item of orden.items">
+            <span class="item-nombre">{{ item.nombre }}</span>
+            <span class="item-cantidad">x{{ item.cantidad }}</span>
+            <span class="item-precio">{{ formatPrecio(item.precio) }}</span>
+          </div>
+        </div>
+
+        <div class="orden-total">
+          <span>Total</span>
+          <span>{{ formatPrecio(orden.total) }}</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sin-ordenes" *ngIf="ordenes.length === 0">
+      No hay órdenes todavía.
+    </div>
+  </div>
+</div>

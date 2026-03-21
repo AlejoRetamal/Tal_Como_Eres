@@ -1,29 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { ProductoService, Producto } from '../../core/services/producto.service';
 import { CategoriaService, Categoria } from '../../core/services/categoria.service';
 
 @Component({
-  selector: 'app-landing',
+  selector: 'app-productos',
   standalone: true,
   imports: [CommonModule, NavbarComponent, RouterModule],
-  templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.css']
+  templateUrl: './productos.component.html',
+  styleUrls: ['./productos.component.css']
 })
-export class LandingComponent implements OnInit {
+export class ProductosComponent implements OnInit {
   productos: Producto[] = [];
-  categorias: Categoria[] = [];
+  categoria: Categoria | null = null;
+  categoria_id!: number;
 
   constructor(
+    private route: ActivatedRoute,
     private productoService: ProductoService,
-    private categoriaService: CategoriaService
+    private categoriaService: CategoriaService,
   ) {}
 
   ngOnInit() {
-    this.productoService.getAll().subscribe(p => this.productos = p);
-    this.categoriaService.getAll().subscribe(c => this.categorias = c);
+    this.route.params.subscribe(params => {
+      this.categoria_id = +params['categoria_id'];
+      this.productoService.getByCategoria(this.categoria_id).subscribe(p => this.productos = p);
+      this.categoriaService.getById(this.categoria_id).subscribe(c => this.categoria = c);
+    });
   }
 
   formatPrecio(precio: number): string {

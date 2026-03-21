@@ -1,0 +1,155 @@
+.admin-wrap {
+  padding-top: 72px;
+  min-height: 100vh;
+  background: var(--cream);
+}
+
+.admin-header {
+  padding: 48px 80px 40px;
+  border-bottom: 1px solid rgba(196,168,130,0.2);
+}
+
+.admin-titulo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 300;
+  margin-bottom: 8px;
+}
+
+.admin-count {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cargando {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.ordenes-lista {
+  padding: 48px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.orden-card {
+  border: 1px solid rgba(196,168,130,0.2);
+  background: #fff;
+}
+
+.orden-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+  border-bottom: 1px solid rgba(196,168,130,0.15);
+  background: var(--light);
+}
+
+.orden-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 300;
+  margin-right: 16px;
+}
+
+.orden-fecha {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+
+.estado-select {
+  border: 1px solid rgba(196,168,130,0.4);
+  background: var(--cream);
+  padding: 8px 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+  color: var(--dark);
+}
+
+.estado-pendiente  { border-color: #C4A882; color: #C4A882; }
+.estado-aprobado   { border-color: #5a7a5a; color: #5a7a5a; }
+.estado-finalizado { border-color: #1A1714; color: #1A1714; }
+
+.orden-body {
+  padding: 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 32px;
+  align-items: start;
+}
+
+.orden-nombre {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 8px;
+}
+
+.orden-dato {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.orden-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(196,168,130,0.1);
+  color: var(--dark);
+}
+
+.item-nombre { flex: 1; }
+.item-cantidad { color: var(--muted); }
+.item-precio { font-weight: 500; }
+
+.orden-total {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.orden-total span:last-child {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--dark);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.sin-ordenes {
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--muted);
+  padding: 80px;
+}

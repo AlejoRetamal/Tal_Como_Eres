@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+
+<div class="detalle-wrap">
+
+  <div *ngIf="cargando" class="estado">
+    <p>Cargando...</p>
+  </div>
+
+  <div *ngIf="!cargando && !producto" class="estado">
+    <p>Producto no encontrado.</p>
+  </div>
+
+  <div *ngIf="producto" class="detalle">
+
+    <div class="breadcrumb">
+      <a routerLink="/">Inicio</a>
+      <span>·</span>
+      <a [routerLink]="['/productos', producto.categoria_id]">{{ producto.categoria }}</a>
+      <span>·</span>
+      <span>{{ producto.nombre }}</span>
+    </div>
+
+    <div class="detalle-main">
+      <div class="detalle-img">
+        <img *ngIf="producto.imagen" [src]="producto.imagen" [alt]="producto.nombre">
+        <div *ngIf="!producto.imagen" class="detalle-img-placeholder">
+          <span>TCE</span>
+        </div>
+      </div>
+
+      <div class="detalle-info">
+        <span class="detalle-categoria">{{ producto.categoria }}</span>
+        <h1 class="detalle-nombre">{{ producto.nombre }}</h1>
+        <p class="detalle-precio">{{ formatPrecio(producto.precio) }}</p>
+        <p class="detalle-desc">{{ producto.descripcion }}</p>
+
+        <button
+          class="btn-carrito"
+          [class.agregado]="agregado"
+          (click)="agregarAlCarrito()"
+        >
+          <svg *ngIf="!agregado" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <svg *ngIf="agregado" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          {{ agregado ? 'Agregado' : 'Agregar al carrito' }}
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

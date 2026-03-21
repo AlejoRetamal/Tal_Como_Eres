@@ -1,0 +1,138 @@
+.page {
+  padding-top: 72px;
+  min-height: 100vh;
+  background: var(--cream);
+}
+
+.page-header {
+  padding: 64px 80px 48px;
+  border-bottom: 1px solid rgba(196,168,130,0.2);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+
+.back-link:hover { color: var(--dark); }
+
+.page-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 56px;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  margin-bottom: 8px;
+}
+
+.page-count {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding: 56px 80px;
+}
+
+.producto-card {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.producto-card:hover { transform: translateY(-4px); }
+
+.producto-img {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: #E0D8CC;
+  margin-bottom: 16px;
+}
+
+.producto-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.producto-card:hover .producto-img img { transform: scale(1.05); }
+
+.producto-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #E0D8CC, #C8BFB0);
+}
+
+.producto-img-placeholder span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(196,168,130,0.5);
+}
+
+.producto-categoria {
+  position: absolute;
+  top: 12px; left: 12px;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: var(--cream);
+  color: var(--dark);
+  padding: 4px 8px;
+}
+
+.producto-nombre {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--dark);
+  margin-bottom: 6px;
+}
+
+.producto-descripcion {
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  line-height: 1.7;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.producto-precio {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--dark);
+}
+
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--muted);
+}
